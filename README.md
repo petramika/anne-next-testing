@@ -1,4 +1,4 @@
-# Anne's vite testing stuffies
+# Anne's Next.js testing stuffies
 
 This skeleton is used for me to test different tools, to see what can I do with them.
 
