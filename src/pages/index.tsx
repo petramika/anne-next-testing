@@ -2,6 +2,8 @@ import Image from 'next/image';
 import '@/app/globals.css';
 import { Box, Link } from '@mui/material';
 import NextLink from 'next/link';
+import _ from 'lodash';
+import { PAGES, PageType } from '@/utils/routes';
 
 const Home = () => {
   return (
@@ -17,26 +19,24 @@ const Home = () => {
             priority
           />
         </Box>
-        <Box component="section"
-          sx={{ p: 2, border: '1px dashed grey' }}
-        >
-          <Link href="/table"
-            component={NextLink}
-            variant="body2"
-          >
-            Table
-          </Link>
-        </Box>
-        <Box component="section"
-          sx={{ p: 2, border: '1px dashed grey' }}
-        >
-          <Link href="/tableTanStack"
-            component={NextLink}
-            variant="body2"
-          >
-            Table TanStack
-          </Link>
-        </Box>
+        {
+          _.map(PAGES, (page: PageType) => {
+            return (
+              <Box 
+                key= {page.id}
+                component="section"
+                sx={{ p: 2, border: '1px dashed grey' }}
+              >
+                <Link href={page.url}
+                  component={NextLink}
+                  variant="body2"
+                >
+                  {page.text}
+                </Link>
+              </Box>
+            );
+          })
+        }
       </Box>
 
       <Box className="py-3">
